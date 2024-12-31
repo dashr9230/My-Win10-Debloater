@@ -1,7 +1,4 @@
 
-; TODO(s):
-; - In ActivateWindows() figure out a method to determine that the /ato execution failed.
-
 #RequireAdmin
 
 #include <StringConstants.au3>
@@ -214,14 +211,13 @@ EndFunc
 Func ActivateWindows()
 	ConsoleWriteLine("Activating Windows...")
 
-	Local $aParams[] = [ _
+	Local $asParams[] = [ _
 		"/ipk W269N-WFGWX-YVC9B-4J6C9-T83GX", _
 		"/skms kms8.msguides.com", _
 		"/ato" _
 	]
-	For $sParam In $aParams
-		ShellExecute("slmgr.vbs", $sParam)
-		If @error <> 0 Then
+	For $sParam In $asParams
+		If ShellExecuteWait("slmgr.vbs", $sParam) <> 0 Or @error <> 0 Then
 			ConsoleWriteLine("  Failed.")
 			Return
 		EndIf
