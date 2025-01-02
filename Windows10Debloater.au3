@@ -43,14 +43,27 @@ Func RemoveApplications()
 	FileClose($hFile)
 
 	; Run and wait until PowerShell is active, then send keystrokes
-	Run("PowerShell")
-	Local $hWnd = WinWaitActive("Windows PowerShell")
+	Local $iPID = ShellExecute("powershell.exe")
+	Local $hWnd = 0
+	Do
+		Sleep(250) ; Wait 250 milliseconds until WinList() gets repolled
+
+		Local $aList = WinList()
+		For $i = 1 To $aList[0][0]
+			If $aList[$i][0] == "" Then ContinueLoop
+			If WinGetProcess($aList[$i][1]) == $iPID Then
+				$hWnd = $aList[$i][1]
+				ExitLoop
+			EndIf
+		Next
+	Until $hWnd <> 0
+
 	ControlSend($hWnd, "", "", "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force{ENTER}")
 	ControlSend($hWnd, "", "", "& """ & $sTempFileName & """{ENTER}")
 
 	; Keep this scrip on sleep while PowerShell executing the script
 	While WinGetHandle($hWnd)
-		Sleep(10)
+		Sleep(250)
 	WEnd
 
 	; Remove temporary PowerShell script file
