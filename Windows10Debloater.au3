@@ -4,14 +4,14 @@
 #include <StringConstants.au3>
 #include <FileConstants.au3>
 
-RemoveApplications()
+RemoveUWPApps() ; Removes applications like 3D Viewer, Alarm & Clock, etc...
 ApplyTweaks()
 CleanUpStartMenu()
 ApplyMicrosoftEdgeSettings()
 ActivateWindows()
 
-Func RemoveApplications()
-	ConsoleWriteLine("Removing applications...")
+Func RemoveUWPApps()
+	ConsoleWriteLine("Removing UWP applications...")
 
 	Local $sUwpAppListFileName = @ScriptDir & "\UwpApps.txt"
 	Local $sTempFileName = @ScriptDir & "\__RemoveUwpApps.Temp.ps1"
@@ -19,18 +19,15 @@ Func RemoveApplications()
 	; Create a temporary PowerShell script
 	Local $hFile = FileOpen($sTempFileName, $FO_OVERWRITE)
 	If $hFile == -1 Then
-		ConsoleWriteLine("  Failed. Could not create PowerShell script.")
+		ConsoleWriteLine("  Failed. Could not create a temporary PowerShell script.")
 		Return
 	EndIf
 
 	FileWrite($hFile, "$ListOfApps = @(" & @CRLF)
-
-	; Let's parse our list of apps to be removed and generate a PowerShell script
 	For $sAppName In FileReadToArray($sUwpAppListFileName)
 		$sAppName = StringSplit($sAppName, "#")[1]
 		If $sAppName == "" Then ContinueLoop
 		$sAppName = StringStripWS($sAppName, $STR_STRIPALL)
-		;ConsoleWriteLine($sAppName)
 		FileWrite($hFile, "    """ & $sAppName & """" & @CRLF)
 	Next
 	FileWrite($hFile, ")" & @CRLF)
@@ -70,7 +67,7 @@ Func RemoveApplications()
 	FileDelete($sTempFileName)
 
 	ConsoleWriteLine("  Done.")
-EndFunc
+EndFunc   ;==>RemoveUWPApps
 
 Func ApplyTweaks()
 	ConsoleWriteLine("Applying system tweaks...")
@@ -177,7 +174,7 @@ Func ApplyTweaks()
 	RestartProcess("explorer.exe")
 
 	ConsoleWriteLine("  Done.")
-EndFunc
+EndFunc   ;==>ApplyTweaks
 
 Func CleanUpStartMenu()
 	ConsoleWriteLine("Removing pinned tiles from the Start Manu...")
@@ -220,7 +217,7 @@ Func CleanUpStartMenu()
 	RegDelete("HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer", "StartLayoutFile")
 
 	ConsoleWriteLine("  Done.")
-EndFunc
+EndFunc   ;==>CleanUpStartMenu
 
 Func ApplyMicrosoftEdgeSettings()
 	ConsoleWriteLine("Applying Microsoft Edge settings...")
@@ -363,7 +360,7 @@ Func ApplyMicrosoftEdgeSettings()
 	RegWrite("HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge", "WebWidgetAllowed", "REG_DWORD", 0)
 
 	ConsoleWriteLine("  Done.")
-EndFunc
+EndFunc   ;==>ApplyMicrosoftEdgeSettings
 
 Func ActivateWindows()
 	ConsoleWriteLine("Activating Windows...")
@@ -375,21 +372,22 @@ Func ActivateWindows()
 	]
 	For $sParam In $asParams
 		If ShellExecuteWait("slmgr.vbs", $sParam) <> 0 Or @error <> 0 Then
-			ConsoleWriteLine("  Failed.")
+			ConsoleWriteLine("  Failed. An error occured when executing """ & $sParam & """.")
 			Return
 		EndIf
 	Next
 
 	ConsoleWriteLine("  Done.")
-EndFunc
+EndFunc   ;==>ActivateWindows
 
-Func ConsoleWriteLine($Output)
-	ConsoleWrite($Output & @CRLF)
-EndFunc
+Func ConsoleWriteLine($sOutput)
+	ConsoleWrite($sOutput & @CRLF)
+EndFunc   ;==>ConsoleWriteLine
 
 Func RestartProcess($sProcessName)
 	Local $hKernel32 = DllOpen("kernel32.dll")
 	Local $hProcess = DllCall($hKernel32, "int", "OpenProcess", "int", 0x1F0FFF, "int", True, "int", ProcessExists($sProcessName))
 	DllCall($hKernel32, "int", "TerminateProcess", "int", $hProcess[0], "dword", 0)
 	DllClose($hKernel32)
-EndFunc
+EndFunc   ;==>RestartProcess
+
