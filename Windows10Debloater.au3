@@ -366,7 +366,7 @@ Func ActivateWindows()
 	ConsoleWriteLine("Activating Windows...")
 
 	Local $asParams[] = [ _
-		"/ipk W269N-WFGWX-YVC9B-4J6C9-T83GX", _
+		"/ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99", _
 		"/skms kms8.msguides.com", _
 		"/ato" _
 	]
