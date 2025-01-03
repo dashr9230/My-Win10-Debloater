@@ -1,3 +1,55 @@
+Microsoft.549981C3F5F10 # Cortana
+Microsoft.VCLibs.140.00.UWPDesktop
+Microsoft.NET.Native.Framework.2.2
+Microsoft.NET.Native.Runtime.2.2
+#Microsoft.VCLibs.140.00
+Microsoft.Advertising.Xaml
+microsoft.windowscommunicationsapps # People, Mail, and Calendar
+#Microsoft.UI.Xaml.2.0
+Microsoft.NET.Native.Framework.1.7
+Microsoft.NET.Native.Runtime.1.7
+Microsoft.WindowsCamera
+Microsoft.XboxIdentityProvider
+Microsoft.WindowsStore
+Microsoft.Windows.Photos
+Microsoft.WindowsAlarms
+Microsoft.SkypeApp
+Microsoft.ZuneVideo
+Microsoft.ZuneMusic
+Microsoft.YourPhone
+Microsoft.XboxSpeechToTextOverlay
+#Microsoft.XboxGamingOverlay # Removes screen recording ability
+Microsoft.XboxGameOverlay
+Microsoft.XboxApp
+Microsoft.Xbox.TCUI
+Microsoft.WindowsSoundRecorder
+Microsoft.WindowsMaps
+Microsoft.WindowsFeedbackHub
+#Microsoft.WindowsCalculator
+Microsoft.WebpImageExtension
+Microsoft.WebMediaExtensions
+Microsoft.Wallet
+Microsoft.VP9VideoExtensions
+Microsoft.StorePurchaseApp
+Microsoft.ScreenSketch
+Microsoft.People
+Microsoft.Office.OneNote
+Microsoft.MSPaint # Paint 3D, not the OG Microsoft Paint
+Microsoft.MixedReality.Portal
+Microsoft.Services.Store.Engagement
+Microsoft.Services.Store.Engagement
+Microsoft.MicrosoftStickyNotes
+Microsoft.MicrosoftSolitaireCollection
+Microsoft.MicrosoftOfficeHub
+Microsoft.MicrosoftEdge.Stable
+Microsoft.Microsoft3DViewer
+Microsoft.HEIFImageExtension
+Microsoft.Getstarted
+Microsoft.GetHelp
+Microsoft.BingWeather
+Microsoft.DesktopAppInstaller
+
+# These apps can't be removed. Thanks Microsoft!
 #Microsoft.Windows.CloudExperienceHost
 #Microsoft.BioEnrollment
 #Microsoft.Windows.OOBENetworkConnectionFlow
@@ -9,22 +61,7 @@
 #Microsoft.Windows.ShellExperienceHost
 #windows.immersivecontrolpanel
 #Microsoft.Windows.Search
-Microsoft.549981C3F5F10 # Cortana
-#Microsoft.VCLibs.140.00.UWPDesktop
-#Microsoft.NET.Native.Framework.2.2
-#Microsoft.NET.Native.Runtime.2.2
 #Microsoft.Windows.ContentDeliveryManager
-#Microsoft.VCLibs.140.00
-#Microsoft.UI.Xaml.2.0
-Microsoft.Windows.Photos
-Microsoft.Advertising.Xaml
-microsoft.windowscommunicationsapps # People, Mail, and Calendar
-#Microsoft.NET.Native.Framework.1.7
-#Microsoft.NET.Native.Runtime.1.7
-Microsoft.WindowsCamera
-Microsoft.DesktopAppInstaller
-#Microsoft.WindowsStore
-#Microsoft.XboxIdentityProvider
 #Windows.PrintDialog
 #Windows.CBSPreview
 #NcsiUwpApp
@@ -51,38 +88,3 @@ Microsoft.DesktopAppInstaller
 #Microsoft.Win32WebViewHost
 #Microsoft.Windows.Apprep.ChxApp
 #Microsoft.Windows.AssignedAccessLockApp
-Microsoft.WindowsAlarms
-Microsoft.SkypeApp
-Microsoft.ZuneVideo
-Microsoft.ZuneMusic
-Microsoft.YourPhone
-#Microsoft.XboxSpeechToTextOverlay
-#Microsoft.XboxGamingOverlay
-#Microsoft.XboxGameOverlay
-#Microsoft.XboxApp
-#Microsoft.Xbox.TCUI
-Microsoft.WindowsSoundRecorder
-Microsoft.WindowsMaps
-Microsoft.WindowsFeedbackHub
-Microsoft.WindowsCalculator
-#Microsoft.WebpImageExtension
-#Microsoft.WebMediaExtensions
-Microsoft.Wallet
-#Microsoft.VP9VideoExtensions
-#Microsoft.StorePurchaseApp
-Microsoft.ScreenSketch
-Microsoft.People
-Microsoft.Office.OneNote
-Microsoft.MSPaint # Paint 3D, not the OG Microsoft Paint
-Microsoft.MixedReality.Portal
-#Microsoft.Services.Store.Engagement
-#Microsoft.Services.Store.Engagement
-Microsoft.MicrosoftStickyNotes
-Microsoft.MicrosoftSolitaireCollection
-Microsoft.MicrosoftOfficeHub
-#Microsoft.MicrosoftEdge.Stable
-Microsoft.Microsoft3DViewer
-#Microsoft.HEIFImageExtension
-Microsoft.Getstarted
-Microsoft.GetHelp
-Microsoft.BingWeather
